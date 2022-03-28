@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <scene>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
+    </scene>
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <model name="ground_cube">
+      <static>true</static>
+      <pose>0 0 -20 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+              <mesh><uri>model://random_slope.dae</uri></mesh>
+          </geometry>
+          <surface>
+            <contact>
+               <collide_bitmask>0xffff</collide_bitmask>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <cast_shadows>true</cast_shadows>
+          <geometry>
+            <mesh><uri>model://random_slope.dae</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>
+
